@@ -2,7 +2,7 @@
 Calculate the size of the rotated image
 
 <p align="center">
-<img src="https://github.com/nullLuli/ImageSizeAfterTransformDemo/blob/master/RPReplay_Final1562310994.gif" width="100%" height="100%" alt="Screenshot Preview" />
+<img src="https://github.com/nullLuli/ImageSizeAfterTransformDemo/blob/master/RPReplay_Final1562310994.gif" width="30%" height="30%" alt="Screenshot Preview" />
 </p>
 
 ## Design & Author
