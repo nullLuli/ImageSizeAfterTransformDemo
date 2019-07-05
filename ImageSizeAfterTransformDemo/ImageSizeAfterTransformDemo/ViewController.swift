@@ -71,30 +71,31 @@ class ViewController: UIViewController {
     
     //使用博文中的方法一
     class func caculateFrame(frame: CGRect, after trans: CGAffineTransform) -> CGRect {
+        //找出四个frame的四个角坐标
         let point1 = CGPoint(x: frame.minX, y: frame.minY)
         let point2 = CGPoint(x: frame.maxX, y: frame.minY)
         let point3 = CGPoint(x: frame.maxX, y: frame.maxY)
         let point4 = CGPoint(x: frame.minX, y: frame.maxY)
         
-        //以center为坐标系中心的相对坐标
+         //计算出四个角以center为坐标系原点的相对坐标
         let point1RP = CGPoint(x: point1.x - frame.midX, y: point1.y - frame.midY)
         let point2RP = CGPoint(x: point2.x - frame.midX, y: point2.y - frame.midY)
         let point3RP = CGPoint(x: point3.x - frame.midX, y: point3.y - frame.midY)
         let point4RP = CGPoint(x: point4.x - frame.midX, y: point4.y - frame.midY)
         
-        //旋转后的相对坐标
+        //旋转相对坐标
         let point1RPAfter = __CGPointApplyAffineTransform(point1RP, trans)
         let point2RPAfter = __CGPointApplyAffineTransform(point2RP, trans)
         let point3RPAfter = __CGPointApplyAffineTransform(point3RP, trans)
         let point4RPAfter = __CGPointApplyAffineTransform(point4RP, trans)
         
-        //旋转后的坐标
+        //从相对坐标转换成iOS系统的坐标
         let point1After = CGPoint(x: point1RPAfter.x + frame.midX, y: point1RPAfter.y + frame.midY)
         let point2After = CGPoint(x: point2RPAfter.x + frame.midX, y: point2RPAfter.y + frame.midY)
         let point3After = CGPoint(x: point3RPAfter.x + frame.midX, y: point3RPAfter.y + frame.midY)
         let point4After = CGPoint(x: point4RPAfter.x + frame.midX, y: point4RPAfter.y + frame.midY)
         
-        //遍历找出四个角
+        //遍历找出四个新角
         var maxX: CGFloat = point4After.x //随便给个初始值，后面会遍历
         var maxY: CGFloat = point4After.y
         var minX: CGFloat = point1After.x
